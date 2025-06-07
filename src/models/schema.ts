@@ -1,4 +1,4 @@
-import { Schema, model} from 'mongoose'
+import { Schema, model} from 'mongoose';
 
 const LibroSchema = new Schema({
   title: { type: String, required: true, unique:true },
