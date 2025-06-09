@@ -1,33 +1,31 @@
 import { Request, Response } from "express";
 import { Libro } from "../models/schema";
+import { ILibro } from "../interface/libro.interface"
+import { rtaError, rtaEsperada } from "../utils/controlRespuesta";
 
 //Listar todos los libros- GET /books
-const getAllLibros = async (req: Request, res: Response): Promise<any> => {
+const getAllLibros = async (req: Request, res: Response): Promise<void> => {
   try {
-    const Libros = await Libro.find()
-    return res.json({
-      sucess: true,
-      data: Libros,
-      message: "Se han encontrado todos los libros"
-    })
+    const libros: ILibro[] = await Libro.find();
+    rtaEsperada(res, libros, 200);
   } catch (error) {
-    const err = error as Error
-    return res.status(500).json({
-      sucess: false,
-      message: err.message
-    })
+    rtaError(res, error);
   }
-}
+};
 
 //Obtener un libro por ID- GET /books/:id
-const getLibroByID = async (req: Request, res: Response): Promise<any> => {
+const getLibroByID = async (req: Request, res: Response): Promise<void> => {
   try {
-    const Libros = await Libro.findById(req.params.id);
-    if (!Libros) return res.status(404).json({ success: false, message: "No pudimos encontrar ese libro! Intentalo nuevamente" });
+    const libro: ILibro | null = await Libro.findById(req.params.id);
 
-    res.json({ success: true, data: Libros });
+    if (!libro) {
+      rtaError(res, new Error("No pudimos encontrar ese libro! Intentalo nuevamente"), 404);
+      return;
+    }
+
+    rtaEsperada(res, libro);
   } catch (error) {
-    res.status(500).json({ success: false, message: (error as Error).message });
+    rtaError(res, error);
   }
 };
 
