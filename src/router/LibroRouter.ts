@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getAllLibros } from "../controllers/controles";
+import { getAllLibros, getLibroByID } from "../controllers/controles";
 
 const LibroRouter = Router();
 
@@ -7,7 +7,7 @@ const LibroRouter = Router();
 LibroRouter.get("/", getAllLibros);
 
 //Obtener un libro por ID- GET /books/:id
-
+LibroRouter.get("/", getLibroByID)
 
 //Crear un nuevo libro- POST /books
 
