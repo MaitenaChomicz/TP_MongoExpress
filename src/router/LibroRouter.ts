@@ -1,16 +1,16 @@
 import { Router } from "express";
-import { getAllLibros, getLibroByID } from "../controllers/controles";
+import { getAllLibros, getLibroByID, createLibro } from "../controllers/controles";
 
 const LibroRouter = Router();
 
-//Listar todos los libros- GET /books
+//Listar todos los libros
 LibroRouter.get("/books", getAllLibros);
 
-//Obtener un libro por ID- GET /books/:id
+//Obtener un libro por ID
 LibroRouter.get("/books/:id", getLibroByID)
 
-//Crear un nuevo libro- POST /books
-
+//Crear un nuevo libro
+LibroRouter.post("/books", createLibro)
 
 //Actualizar un libro existente- PATCH /books/:id
 

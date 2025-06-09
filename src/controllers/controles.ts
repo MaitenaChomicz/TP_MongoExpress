@@ -30,7 +30,15 @@ const getLibroByID = async (req: Request, res: Response): Promise<void> => {
 };
 
 //Crear un nuevo libro- POST /books
-
+const createLibro = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const nuevoLibro: ILibro = req.body;
+    const libroCreado = await Libro.create(nuevoLibro);
+    rtaEsperada(res, libroCreado, 201);
+  } catch (error) {
+    rtaError(res, error);
+  }
+};
 
 //Actualizar un libro existente- PATCH /books/:id
 
@@ -38,4 +46,4 @@ const getLibroByID = async (req: Request, res: Response): Promise<void> => {
 //Eliminar un libro- DELETE /books/:id
 
 
-export { getAllLibros, getLibroByID }
+export { getAllLibros, getLibroByID, createLibro }
