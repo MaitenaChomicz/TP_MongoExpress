@@ -4,10 +4,10 @@ import { getAllLibros, getLibroByID } from "../controllers/controles";
 const LibroRouter = Router();
 
 //Listar todos los libros- GET /books
-LibroRouter.get("/", getAllLibros);
+LibroRouter.get("/books", getAllLibros);
 
 //Obtener un libro por ID- GET /books/:id
-LibroRouter.get("/", getLibroByID)
+LibroRouter.get("/books/:id", getLibroByID)
 
 //Crear un nuevo libro- POST /books
 
