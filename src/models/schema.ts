@@ -1,4 +1,4 @@
-import { Schema, model} from 'mongoose';
+import { Schema, model } from 'mongoose';
 
 const LibroSchema = new Schema({
   title: { type: String, required: true, unique:true },
@@ -8,6 +8,6 @@ const LibroSchema = new Schema({
   available: { type: Boolean, default: true},
 }, { versionKey: false })
 
-const Libro = model('Libro', LibroSchema)
+const Libro = model('Libro', LibroSchema);
 
 export { Libro }

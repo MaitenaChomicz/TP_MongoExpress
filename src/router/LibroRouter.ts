@@ -1,10 +1,10 @@
-import { Router } from "express"
-import {getAllLibros} from "../controllers/controles"
+import { Router } from "express";
+import { getAllLibros } from "../controllers/controles";
 
 const LibroRouter = Router();
 
 //Listar todos los libros- GET /books
-LibroRouter.get("/", getAllLibros)
+LibroRouter.get("/", getAllLibros);
 
 //Obtener un libro por ID- GET /books/:id
 
@@ -20,4 +20,4 @@ LibroRouter.get("/", getAllLibros)
 
 
 
-export {LibroRouter}
+export { LibroRouter }

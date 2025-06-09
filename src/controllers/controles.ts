@@ -1,5 +1,5 @@
-import { Request, Response } from "express"
-import { Libro } from "../models/schema"
+import { Request, Response } from "express";
+import { Libro } from "../models/schema";
 
 //Listar todos los libros- GET /books
 const getAllLibros = async (req: Request, res: Response): Promise<any> => {
